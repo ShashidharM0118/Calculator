@@ -14,7 +14,7 @@
 
     <text
         android:text="My Button"
-        android:textSize="30sp"
+        android:textSize="38sp"
         android:textStyle="bold"
         android:gravity="center" />
 </shape>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -49,8 +50,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         int sum = 0;
         Button one, two, three, four, five, six, seven, eight, nine, zero, doublezero,equal;
-        Button add,sub,mul,div,clear,dot;
+        Button add,sub,mul,div,clear,dot,perc;
+        ImageButton delete ;
 
+        delete = findViewById(R.id.delete);
+        perc = findViewById(R.id.perc);
         dot = findViewById(R.id.dot);
         clear = findViewById(R.id.c);
         add = findViewById(R.id.add);
@@ -132,14 +136,21 @@ public class MainActivity extends AppCompatActivity {
         nine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sb.append('0');
+                sb.append('9');
                 answer.setText(sb.toString());
             }
         });
         doublezero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sb.append(00);
+                sb.append("0");
+                answer.setText(sb.toString());
+            }
+        });
+        zero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sb.append("00");
                 answer.setText(sb.toString());
             }
         });
@@ -183,6 +194,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(sb.length() != 0) {
+                    sb.deleteCharAt(sb.length() - 1);
+                    answer.setText(sb.toString());
+                }
+            }
+        });
+
+        perc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sb.append("X");
+                sb.append("100");
+                answer.setText(sb.toString());
+            }
+        });
+
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -201,11 +231,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
         equal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -218,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
                     sb.deleteCharAt(0);
                 }
                 for (int i = 0; i < sb.length(); i++) {
-                   
+
                     if (!isSymbol(sb.charAt(i))) {
                         temp.append(sb.charAt(i));
                     } else if (isSymbol(sb.charAt(i))) {

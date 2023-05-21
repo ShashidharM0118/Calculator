@@ -17,7 +17,7 @@
         android:layout_alignTop="@+id/lay1"
 
         android:layout_marginTop="-120dp"
-        android:text="45"
+        android:text=""
 
         android:textSize="38sp"
         android:textAlignment="center"
@@ -51,14 +51,17 @@
             android:text="%"
             android:textColor="@color/black"
             android:background="@color/white"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="103dp"
+
+        <ImageButton
             android:id="@+id/delete"
-           android:layout_height="80dp"
-            android:text="__"
+            android:layout_width="103dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
             android:layout_toRightOf="@+id/perc"
-            android:textColor="@color/black"
-            android:background="@color/white"/>
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/backspace"
+            android:textColor="@color/black" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/divide"
@@ -227,7 +230,7 @@
             android:id="@+id/doubleZero"
             android:layout_width="103dp"
            android:layout_height="80dp"
-            android:text="00"
+            android:text="0"
 
             android:textColor="@color/black"
             android:background="@color/white"/>
@@ -236,7 +239,7 @@
             android:layout_toRightOf="@+id/doubleZero"
             android:layout_width="103dp"
            android:layout_height="80dp"
-            android:text="0"
+            android:text="00"
             android:textColor="@color/black"
             android:background="@color/white"/>
         <androidx.appcompat.widget.AppCompatButton
