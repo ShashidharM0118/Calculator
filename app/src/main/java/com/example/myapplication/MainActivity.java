@@ -16,10 +16,36 @@ public class MainActivity extends AppCompatActivity {
     static boolean signNegative = false;
     static int functionUsed =0;
     public static boolean isSymbol(char ch){
-        if(ch == '+' || ch =='-' || ch == '/' || ch == 'X' ){
+        if(ch == '+' || ch =='-' || ch == '/' || ch == 'x' ){
             return true;
         }
         return false;
+
+    }
+    public static int jFinder(ArrayList<Character> sym){
+       for(int i =0;i<sym.size();i++){
+           if(sym.get(i) =='/'){
+               return  i;
+           }
+       }
+        for(int i =0;i<sym.size();i++){
+            if(sym.get(i) =='x'){
+                return  i;
+            }
+        }
+        for(int i =0;i<sym.size();i++){
+            if(sym.get(i) =='+'){
+                return  i;
+            }
+        }
+        for(int i =0;i<sym.size();i++){
+            if(sym.get(i) =='-'){
+                return  i;
+            }
+        }
+        return 0;
+
+
 
     }
     public static String cals(String il,String i2,char sym){
@@ -38,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             return Float.toString(num1-num2);
         }else if (sym == '/'){
             return Float.toString(num1/num2);
-        }else if(sym == 'X'){
+        }else if(sym == 'x'){
             return Float.toString(num1*num2);
         }
         return "error";
@@ -159,10 +185,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(sb.length() == 0){
                     return;
-                }
-                sb.append("+");
-                answer.setText(sb.toString());
+                }else if(isSymbol(sb.charAt(sb.length()-1))){
+                    sb.setCharAt(sb.length()-1,'+');
 
+                }else {
+                    sb.append("+");
+                }
+                answer.setText(sb.toString());
             }
         });
         sub.setOnClickListener(new View.OnClickListener() {
@@ -170,27 +199,39 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(sb.length() == 0){
                     signNegative = true;
-
+                }else if(isSymbol(sb.charAt(sb.length()-1))){
+                    sb.setCharAt(sb.length()-1,'-');
+                }else {
+                    sb.append("-");
                 }
-                sb.append("-");
                 answer.setText(sb.toString());
-
             }
         });
         mul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sb.append("X");
-                answer.setText(sb.toString());
+                if (sb.length() == 0) {
+                    return;
+                } else if (isSymbol(sb.charAt(sb.length() - 1))) {
+                    sb.setCharAt(sb.length() - 1, 'x');
 
+                } else {
+                    sb.append("x");
+                }
+                answer.setText(sb.toString());
             }
         });
         div.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sb.append("/");
+                if(sb.length() == 0){
+                    signNegative = true;
+                }else if(isSymbol(sb.charAt(sb.length()-1))){
+                    sb.setCharAt(sb.length()-1,'/');
+                }else {
+                    sb.append("/");
+                }
                 answer.setText(sb.toString());
-
             }
         });
 
@@ -207,9 +248,13 @@ public class MainActivity extends AppCompatActivity {
         perc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sb.append("X");
-                sb.append("100");
+                sb.append('%');
                 answer.setText(sb.toString());
+                sb.deleteCharAt(sb.length()-1);
+                sb.append("x");
+                sb.append("100");
+
+
             }
         });
 
@@ -224,8 +269,11 @@ public class MainActivity extends AppCompatActivity {
         dot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(sb.charAt(sb.length()-1) != '.'){
                 sb.append(".");
                 answer.setText(sb.toString());
+
+                }
             }
         });
 
@@ -256,15 +304,14 @@ public class MainActivity extends AppCompatActivity {
                         temp.setLength(0);
                     }
                 }
-                int j =0;
-                for(int i = 0;i<numbers.size()-1;i++){
-                    numbers.set(i+1,cals(numbers.get(i),numbers.get(i+1),sym.get(j)));
-                    j++;
+                int j = jFinder(sym);
+                    while(numbers.size() != 1){
+                    numbers.set(j+1,cals(numbers.get(j),numbers.get(j+1),sym.get(j)));
+                   numbers.remove(j);
+                   sym.remove(j);
+                    j = jFinder(sym);
                 }
-
                 answer.setText(numbers.get(numbers.size()-1));
-
-
             }
         });
 
