@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     static boolean signNegative = false;
     static int functionUsed =0;
+    static int j;
     public static boolean isSymbol(char ch){
         if(ch == '+' || ch =='-' || ch == '/' || ch == 'x' ){
             return true;
@@ -22,30 +23,28 @@ public class MainActivity extends AppCompatActivity {
         return false;
 
     }
-    public static int jFinder(ArrayList<Character> sym){
-       for(int i =0;i<sym.size();i++){
-           if(sym.get(i) =='/'){
-               return  i;
-           }
-       }
-        for(int i =0;i<sym.size();i++){
+    public static int jFinder(ArrayList<Character> sym,int start,int end){
+        for(int i =start;i<end;i++){
+            if(sym.get(i) =='/'){
+                return  i;
+            }
+        }
+        for(int i =start;i<end;i++){
             if(sym.get(i) =='x'){
                 return  i;
             }
         }
-        for(int i =0;i<sym.size();i++){
+        for(int i =start;i<end;i++){
             if(sym.get(i) =='+'){
                 return  i;
             }
         }
-        for(int i =0;i<sym.size();i++){
+        for(int i =start;i<sym.size();i++){
             if(sym.get(i) =='-'){
                 return  i;
             }
         }
         return 0;
-
-
 
     }
     public static String cals(String il,String i2,char sym){
@@ -75,14 +74,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         int sum = 0;
-        Button one, two, three, four, five, six, seven, eight, nine, zero, doublezero,equal;
-        Button add,sub,mul,div,clear,dot,perc;
+        Button one, two, three, four, five, six, seven, eight, nine, zero,Openbracket,Closebracket,equal;
+        Button add,sub,mul,div,clear,dot,perc,allClear;
         ImageButton delete ;
 
-        delete = findViewById(R.id.delete);
+        Openbracket = findViewById(R.id.openbracket);
+        Closebracket = findViewById(R.id.closeBracket);
         perc = findViewById(R.id.perc);
         dot = findViewById(R.id.dot);
-        clear = findViewById(R.id.c);
+        clear = findViewById(R.id.clear);
+        allClear = findViewById(R.id.c);
         add = findViewById(R.id.add);
         sub = findViewById(R.id.subtract);
         mul = findViewById(R.id.multiply);
@@ -99,10 +100,33 @@ public class MainActivity extends AppCompatActivity {
         nine = findViewById(R.id.nine);
         zero = findViewById(R.id.zero);
         TextView answer = findViewById(R.id.answer);
-        doublezero = findViewById(R.id.doubleZero);
+
 
 
         StringBuilder sb = new StringBuilder();
+
+        Openbracket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(sb.length() == 0 || sb.length() != 0 && isSymbol(sb.charAt(sb.length()-1))) {
+                    sb.append(('('));
+                    answer.setText(sb.toString());
+                }
+                }
+
+        });
+
+        Closebracket.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View view) {
+                if(sb.length()!= 0 && !isSymbol(sb.charAt(sb.length()-1))) {
+                    sb.append((')'));
+                    answer.setText(sb.toString());
+                }
+            }
+
+        });
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -166,17 +190,11 @@ public class MainActivity extends AppCompatActivity {
                 answer.setText(sb.toString());
             }
         });
-        doublezero.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sb.append("0");
-                answer.setText(sb.toString());
-            }
-        });
+
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sb.append("00");
+                sb.append("0");
                 answer.setText(sb.toString());
             }
         });
@@ -235,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        delete.setOnClickListener(new View.OnClickListener() {
+        clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(sb.length() != 0) {
@@ -258,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        clear.setOnClickListener(new View.OnClickListener() {
+        allClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sb.setLength(0);
@@ -285,47 +303,73 @@ public class MainActivity extends AppCompatActivity {
 //
                 ArrayList<String> numbers = new ArrayList<>();
                 ArrayList<Character> sym = new ArrayList<>();
-
+                ArrayList<Character> brackets = new ArrayList<>();
+                ArrayList<Integer> BracPos = new ArrayList<>();
                 StringBuilder temp = new StringBuilder();
+
                 if (signNegative == true){
                     sb.deleteCharAt(0);
                 }
+
                 for (int i = 0; i < sb.length(); i++) {
 
-                    if (!isSymbol(sb.charAt(i))) {
+                    if (!isSymbol(sb.charAt(i)) && (sb.charAt(i) != '(' && sb.charAt(i) != ')')) {
                         temp.append(sb.charAt(i));
                     } else if (isSymbol(sb.charAt(i))) {
                         sym.add(sb.charAt(i));
                         numbers.add(temp.toString());
                         temp.setLength(0);
+                    }else if(sb.charAt(i) == '(' || sb.charAt(i) == ')'){
+                        brackets.add(sb.charAt(i));
+                        if (sb.charAt(i) == '(') {
+                            BracPos.add(sym.size());
+                        }else {
+                            BracPos.add(-(sym.size()) );
+                        }
                     }
-                    if (i == sb.length() - 1) {
+                    if (i == sb.length() - 1) { //for the last number
                         numbers.add(temp.toString());
                         temp.setLength(0);
                     }
                 }
-                int j = jFinder(sym);
-                    while(numbers.size() != 1){
-                    numbers.set(j+1,cals(numbers.get(j),numbers.get(j+1),sym.get(j)));
-                   numbers.remove(j);
-                   sym.remove(j);
-                    j = jFinder(sym);
+                if(brackets.size() != 0) {
+
+                    for (int i = BracPos.size()-2 ;  i >= 0 ; i--) {
+
+                        int start= BracPos.get(i);
+                        int end  = (BracPos.get(i + 1) * -1);
+                        int subtractor =0;
+                        for(int l = start;l<end;l++) {
+                            int j = jFinder(sym,BracPos.get(i),(BracPos.get(i + 1) * -1)-subtractor);
+                            numbers.set(j+1,cals(numbers.get(j),numbers.get(j+1),sym.get(j)));
+                            numbers.remove(j);
+                            sym.remove(j);
+                            subtractor++;
+                        }
+
+//                int k ;
+//                for( k = (BracPos.get(i+1)*-1)-1 ;k>=(BracPos.get(i));k--){
+//                    numbers.remove(k);
+//                    sym.remove(k);
+//                }
+
+                        BracPos.remove(i+1);
+                        BracPos.remove(i);
+
+                    }
                 }
+
+                int j = jFinder(sym,0,sym.size());
+                while(numbers.size() != 1){
+                    numbers.set(j+1,cals(numbers.get(j),numbers.get(j+1),sym.get(j)));
+                    numbers.remove(j);
+                    sym.remove(j);
+                    j = jFinder(sym,0,sym.size());
+                }
+
+
                 answer.setText(numbers.get(numbers.size()-1));
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

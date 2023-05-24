@@ -40,7 +40,7 @@
             android:layout_height="80dp"
             android:background="@color/black"
             android:drawableBottom="@drawable/button"
-            android:text="C"
+            android:text="AC"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -52,22 +52,33 @@
             android:textColor="@color/black"
             android:background="@color/white"/>
 
-        <ImageButton
-            android:id="@+id/delete"
-            android:layout_width="103dp"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/openbracket"
+            android:layout_width="51.5dp"
             android:layout_height="80dp"
             android:layout_centerInParent="true"
             android:layout_toRightOf="@+id/perc"
             android:background="@color/white"
             android:scaleType="fitCenter"
-            android:src="@drawable/backspace"
+            android:text="("
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/closeBracket"
+            android:layout_width="51.5dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/openbracket"
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:text=")"
             android:textColor="@color/black" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/divide"
             android:layout_width="103dp"
            android:layout_height="80dp"
-            android:layout_toRightOf="@+id/delete"
+            android:layout_toRightOf="@+id/closeBracket"
             android:background="@color/white"
             android:text="/"
             android:textColor="@color/black" />
@@ -227,7 +238,7 @@
 
         >
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/doubleZero"
+            android:id="@+id/zero"
             android:layout_width="103dp"
            android:layout_height="80dp"
             android:text="0"
@@ -235,19 +246,19 @@
             android:textColor="@color/black"
             android:background="@color/white"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/zero"
-            android:layout_toRightOf="@+id/doubleZero"
+            android:id="@+id/dot"
+            android:layout_toRightOf="@+id/zero"
             android:layout_width="103dp"
            android:layout_height="80dp"
-            android:text="00"
+            android:text="."
             android:textColor="@color/black"
             android:background="@color/white"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="103dp"
-            android:id="@+id/dot"
+            android:id="@+id/clear"
            android:layout_height="80dp"
-            android:text="."
-            android:layout_toRightOf="@+id/zero"
+            android:text="C"
+            android:layout_toRightOf="@+id/dot"
             android:textColor="@color/black"
             android:background="@color/white"/>
 
@@ -257,7 +268,7 @@
             android:id="@+id/equal"
             android:layout_width="103dp"
            android:layout_height="80dp"
-            android:layout_toRightOf="@+id/dot"
+            android:layout_toRightOf="@+id/clear"
             android:layout_marginLeft="0dp"
             android:shadowColor="#D15858"
 
