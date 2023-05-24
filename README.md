@@ -6,4 +6,4 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://github.com/ShashidharM0118/Calculator/blob/master/calcy.png?raw=true" alt="project-screenshot"/>
+<img src="calcy.png" alt="project-screenshot"/>
