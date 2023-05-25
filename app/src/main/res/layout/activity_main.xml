@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,14 +9,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
     <TextView
         android:id="@+id/answer"
 
         android:layout_width="match_parent"
         android:layout_height="86dp"
-        android:layout_alignTop="@+id/lay1"
-
+        android:layout_alignTop="@+id/firstRow"
         android:layout_marginTop="-120dp"
         android:text=""
 
@@ -25,258 +24,233 @@
 
     </TextView>
 
-    <RelativeLayout
-        android:layout_marginTop="310dp"
-        android:id="@+id/lay1"
-        android:layout_width="match_parent"
+    <TableLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        android:layout_weight="0"
+        android:id="@+id/firstRow"
+        android:layout_marginTop="310dp"
+
+        android:outlineAmbientShadowColor="#C55555"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TableRow>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/c"
+                android:layout_width="103dp"
+                android:layout_height="80dp"
+                android:background="@color/black"
+                android:drawableBottom="@drawable/button"
+                android:text="AC"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/perc"
+                android:layout_toRightOf="@+id/c"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:text="%"
+                android:textColor="@color/black"
+                android:background="@color/white"/>
+
+            <TableLayout
+
+                android:layout_height="80dp"
+                android:layout_width="wrap_content">
+
+                    <TableRow>
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/openbracket"
+                            android:layout_width="50dp"
+                            android:layout_height="80dp"
+                            android:layout_centerInParent="true"
+                            android:layout_toRightOf="@+id/perc"
+                            android:background="@color/white"
+                            android:scaleType="fitCenter"
+                            android:text="("
+                            android:textColor="@color/black" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/closeBracket"
+                            android:layout_width="50dp"
+                            android:layout_height="80dp"
+                            android:layout_centerInParent="true"
+                            android:layout_toRightOf="@+id/openbracket"
+                            android:background="@color/white"
+                            android:scaleType="fitCenter"
+                            android:text=")"
+                            android:textColor="@color/black" />
+                    </TableRow>
+            </TableLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/divide"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_toRightOf="@+id/closeBracket"
+                android:background="@color/white"
+                android:text="/"
+                android:textColor="@color/black" />
+
+        </TableRow>
+        <TableLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            android:layout_weight="0"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:text="7"
+
+                    android:textColor="@color/black"
+                    android:background="@color/white"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_8"
+                    android:layout_toRightOf="@+id/seven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:text="8"
+                    android:textColor="@color/black"
+                    android:background="@color/white"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/button_9"
+                    android:layout_height="80dp"
+                    android:text="9"
+                    android:textColor="@color/black"
+                    android:background="@color/white"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/multiply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_toRightOf="@+id/nine"
+                    android:background="@color/white"
+                    android:text="X"
+                    android:textColor="@color/black" />
 
 
-        >
+            </TableRow>
+            <TableRow>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:text="4"
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/c"
-            android:layout_width="103dp"
-            android:layout_height="80dp"
-            android:background="@color/black"
-            android:drawableBottom="@drawable/button"
-            android:text="AC"
-            android:textColor="@color/white" />
+                    android:textColor="@color/black"
+                    android:background="@color/white"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_5"
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/perc"
-            android:layout_toRightOf="@+id/c"
-            android:layout_width="103dp"
-            android:layout_height="80dp"
-            android:text="%"
-            android:textColor="@color/black"
-            android:background="@color/white"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:text="5"
+                    android:textColor="@color/black"
+                    android:background="@color/white"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/button_6"
+                    android:layout_height="80dp"
+                    android:text="6"
+                    android:textColor="@color/black"
+                    android:background="@color/white"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/openbracket"
-            android:layout_width="51.5dp"
-            android:layout_height="80dp"
-            android:layout_centerInParent="true"
-            android:layout_toRightOf="@+id/perc"
-            android:background="@color/white"
-            android:scaleType="fitCenter"
-            android:text="("
-            android:textColor="@color/black" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/subtract"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_toRightOf="@+id/six"
+                    android:background="@color/white"
+                    android:text="-"
+                    android:textColor="@color/black" />
+            </TableRow>
+            <TableRow>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:text="1"
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/closeBracket"
-            android:layout_width="51.5dp"
-            android:layout_height="80dp"
-            android:layout_centerInParent="true"
-            android:layout_toRightOf="@+id/openbracket"
-            android:background="@color/white"
-            android:scaleType="fitCenter"
-            android:text=")"
-            android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:background="@color/white"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_2"
+                    android:layout_toRightOf="@+id/one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:text="2"
+                    android:textColor="@color/black"
+                    android:background="@color/white"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/button_3"
+                    android:layout_height="80dp"
+                    android:text="3"
+                    android:layout_toRightOf="@+id/two"
+                    android:textColor="@color/black"
+                    android:background="@color/white"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/divide"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:layout_toRightOf="@+id/closeBracket"
-            android:background="@color/white"
-            android:text="/"
-            android:textColor="@color/black" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
 
+                    android:background="@color/white"
+                    android:text="+"
+                    android:textColor="@color/black" />
 
+            </TableRow>
 
-    </RelativeLayout>
+            <TableRow>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:text="0"
 
-    <RelativeLayout
-        android:layout_marginTop="4dp"
-        android:layout_width="match_parent"
-       android:layout_height="80dp"
-        android:id="@+id/lay2"
-        android:layout_below="@+id/lay1"
-        >
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/seven"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:text="7"
-
-            android:textColor="@color/black"
-            android:background="@color/white"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/eight"
-            android:layout_toRightOf="@+id/seven"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:text="8"
-            android:textColor="@color/black"
-            android:background="@color/white"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="103dp"
-            android:id="@+id/nine"
-           android:layout_height="80dp"
-            android:text="9"
-            android:layout_toRightOf="@+id/eight"
-            android:textColor="@color/black"
-            android:background="@color/white"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/multiply"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:layout_toRightOf="@+id/nine"
-            android:background="@color/white"
-            android:text="X"
-            android:textColor="@color/black" />
-
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/lay3"
-        android:layout_marginTop="4dp"
-        android:layout_width="match_parent"
-       android:layout_height="80dp"
-
-        android:layout_below="@id/lay2"
-        >
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/four"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:text="4"
-
-            android:textColor="@color/black"
-            android:background="@color/white"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/five"
-            android:layout_toRightOf="@+id/four"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:text="5"
-            android:textColor="@color/black"
-            android:background="@color/white"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="103dp"
-            android:id="@+id/six"
-           android:layout_height="80dp"
-            android:text="6"
-            android:layout_toRightOf="@+id/five"
-            android:textColor="@color/black"
-            android:background="@color/white"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/subtract"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:layout_toRightOf="@+id/six"
-            android:background="@color/white"
-            android:text="-"
-            android:textColor="@color/black" />
-    </RelativeLayout>
-
-    <RelativeLayout
-
-
-        android:id="@+id/lay4"
-        android:layout_marginTop="4dp"
-        android:layout_width="match_parent"
-       android:layout_height="80dp"
-        android:layout_below="@+id/lay3"
-        android:layout_alignParentEnd="true"
-
-
-
-
-        >
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/one"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:text="1"
-
-            android:textColor="@color/black"
-            android:background="@color/white"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/two"
-            android:layout_toRightOf="@+id/one"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:text="2"
-            android:textColor="@color/black"
-            android:background="@color/white"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="103dp"
-            android:id="@+id/three"
-           android:layout_height="80dp"
-            android:text="3"
-            android:layout_toRightOf="@+id/two"
-            android:textColor="@color/black"
-            android:background="@color/white"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/add"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:layout_toRightOf="@+id/three"
-            android:background="@color/white"
-            android:text="+"
-            android:textColor="@color/black" />
-
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_alignParentBottom="true"
-        android:id="@+id/lay5"
-        android:layout_marginTop="4dp"
-        android:layout_width="match_parent"
-       android:layout_height="80dp"
-        android:layout_below="@+id/lay4"
-
-
-        >
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/zero"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:text="0"
-
-            android:textColor="@color/black"
-            android:background="@color/white"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/dot"
-            android:layout_toRightOf="@+id/zero"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:text="."
-            android:textColor="@color/black"
-            android:background="@color/white"/>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="103dp"
-            android:id="@+id/clear"
-           android:layout_height="80dp"
-            android:text="C"
-            android:layout_toRightOf="@+id/dot"
-            android:textColor="@color/black"
-            android:background="@color/white"/>
+                    android:textColor="@color/black"
+                    android:background="@color/white"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/dot"
+                    android:layout_toRightOf="@+id/zero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:text="."
+                    android:textColor="@color/black"
+                    android:background="@color/white"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:id="@+id/clear"
+                    android:layout_height="80dp"
+                    android:text="C"
+                    android:layout_toRightOf="@+id/dot"
+                    android:textColor="@color/black"
+                    android:background="@color/white"/>
 
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/equal"
-            android:layout_width="103dp"
-           android:layout_height="80dp"
-            android:layout_toRightOf="@+id/clear"
-            android:layout_marginLeft="0dp"
-            android:shadowColor="#D15858"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/equal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_toRightOf="@+id/clear"
+                    android:layout_marginLeft="0dp"
+                    android:shadowColor="#D15858"
 
-            android:background="#E8A9A9"
+                    android:background="#E8A9A9"
+                    android:text="="
+                    android:textColor="@color/black" />
 
-            android:text="="
-            android:textColor="@color/black" />
+            </TableRow>
 
-    </RelativeLayout>
 
+        </TableLayout>
+
+    </TableLayout>
 </RelativeLayout>
