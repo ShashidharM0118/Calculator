@@ -2,7 +2,7 @@
 
 <p align="center">
 
-<p id="description">Here is an experimental and exploratory calculator app without using exper4j or any other standard libraries for creating calculator</p>
+<p id="description">A simple calculator app using Exper4j library</p>
 
 <h2>Project Screenshots:</h2>
 
