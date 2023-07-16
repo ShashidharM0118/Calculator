@@ -2,7 +2,7 @@
 
 <p align="center">
 
-<p id="description">A simple calculator app using Exper4j library</p>
+<p id="description">A simple calculator app using Exper4j library (check previous commits for implementation without using any library)</p>
 
 <h2>Project Screenshots:</h2>
 
